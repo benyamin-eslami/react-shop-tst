@@ -16,21 +16,38 @@ export const shopSlice = createSlice({
     increaseItems: (state, action) => {
       state.cart = state.cart.map((item) => {
         if (item.id === action.payload.id) {
+          item.count++;
         }
+        return item;
+      });
+    },
+    decreaseItems: (state, action) => {
+      state.cart = state.cart.map((item) => {
+        if (item.id === action.payload.id && item.count > 1) {
+          item.count--;
+        }
+        return item;
       });
     },
     addToCart: (state, action) => {
-      state.value += action.payload;
-    },
-    decreaseItems: (state, action) => {
-      state.value += action.payload;
+      state.cart = [...state.cart, action.payload.item];
     },
     removeItems: (state, action) => {
-      state.value += action.payload;
+      state.cart = state.cart.filter((item) => item.id !== action.payload.id);
+    },
+    setIsCartOpen: (state) => {
+      state.isCartOpen = !state.isCartOpen;
     },
   },
 });
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const {
+  setItems,
+  increaseItems,
+  decreaseItems,
+  addToCart,
+  removeItems,
+  setIsCartOpen,
+} = shopSlice.actions;
 
-export default counterSlice.reducer;
+export default shopSlice.reducer;

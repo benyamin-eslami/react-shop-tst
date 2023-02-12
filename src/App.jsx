@@ -3,6 +3,7 @@ import "./App.css";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Layout from "./components/Layout";
+import CartMenu from "./components/cartMenu";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -17,6 +18,7 @@ function App() {
     <div className="App">
       <Layout>
         <ScrollToTop />
+        <CartMenu />
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>
