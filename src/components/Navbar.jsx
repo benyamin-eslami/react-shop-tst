@@ -6,7 +6,6 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsCartOpen } from "../redux/features/shopSlice";
-import { height } from "@mui/system";
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
